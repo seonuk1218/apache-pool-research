@@ -1,0 +1,34 @@
+# https://github.com/linuxserver/docker-openssh-server
+services:
+  openssh-server-one:
+    image: lscr.io/linuxserver/openssh-server:latest
+    container_name: openssh-server-one
+    hostname: openssh-server-one
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Seoul
+      - SUDO_ACCESS=true
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=server.one
+      - USER_NAME=server.one
+      - LOG_STDOUT=
+    ports:
+      - 2222:2222
+    restart: unless-stopped
+  openssh-server-two:
+    image: lscr.io/linuxserver/openssh-server:latest
+    container_name: openssh-server-two
+    hostname: openssh-server-two
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Seoul
+      - SUDO_ACCESS=true
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=server.two
+      - USER_NAME=server.two
+      - LOG_STDOUT=
+    ports:
+      - 3333:2222
+    restart: unless-stopped
